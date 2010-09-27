@@ -37,6 +37,16 @@ Example:
       verbose: true
     });
 
+### Options on fugue.start:
+
+* working_path : absolute path for the working dir
+* tmp_path : the absolute path for the temp dir. defaults to current_dir/tmp
+* log_file : the full path of the log file if you wish stdout to be redirected there. All workers + master will write here. If absent does not touch stdout.
+* master_log_file : alternative path for the log file for the master only.
+* uid : unix user id for workers. Defaults to current user
+* gid : unix group id for workers. Defaults to current group
+* daemonize : Not yet supported
+
 ## TODO:
 
 * Reload using SIGUSR2 is pending depending on [this](http://groups.google.com/group/nodejs/browse_thread/thread/eb3ba019e6dbec70)
