@@ -1,4 +1,4 @@
-var fugue = require('../lib/fugue.js'),
+var fugue = require('fugue'),
     net =   require('net');
 
 var server = net.createServer(function(conn) {
