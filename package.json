@@ -1,0 +1,24 @@
+{ "name" : "fugue"
+, "description" : "Unicorn for node for node"
+, "version" : "0.1"
+, "homepage" : "http://www.metaduck.com/fugue"
+, "author" : "Pedro Teixeira <pedro.teixeira@gmail.com> (http://www.metaduck.com)"
+, "contributors" :
+  [ "Pedro Teixeira <pedro.teixeira@gmail.com>"
+  ]
+, "repository" :
+  { "type" : "git"
+  , "url" : "http://github.com/pgte/fugue.git"
+  }
+, "bugs" :
+  { "mail" : "pedro.teixeira@gmail.com"
+  , "web" : "http://github.com/pgte/fugue/issues"
+  }
+, "directories" : { "lib" : "./lib" }
+, "engines" : { "node" : ">=0.2.2" }
+, "licenses" :
+  [ { "type" : "MIT"
+    , "url" : "http://github.com/isaacs/npm/raw/master/LICENSE"
+    }
+  ]
+}
