@@ -4,11 +4,12 @@ Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](ht
 
 ## Features:
 
-* Failover
-* Reload using SIGUSR2 (almost, as soon as [this](http://groups.google.com/group/nodejs/browse_thread/thread/eb3ba019e6dbec70) is sorted out)
-* Set gid, uid
-* Set working dir
-* daemonize properly
+* Failover -  when a worker dies it is restarted.
+* Reload using SIGUSR2 (almost, as soon as [this](http://groups.google.com/group/nodejs/browse_thread/thread/eb3ba019e6dbec70) is sorted out).
+* Set gid, uid.
+* Set working dir.
+* Redirect stdout to log files for master / workers
+* daemonize properly (almost).
 
 ## Install:
 
