@@ -13,7 +13,7 @@ Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](ht
 
 ## Install:
 
-    sudo nmp install fugue
+    nmp install fugue
 
 ## Usage:
 
