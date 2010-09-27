@@ -41,11 +41,11 @@ Example:
 
 For UNIX sockets:
 
-    fugue.start(server, port, host, number_of_workers, options);
+    fugue.start(server, socket_path, number_of_workers, options);
     
 For TCP:
 
-    fugue.start(server, socket_path, number_of_workers, options);
+    fugue.start(server, port, host, number_of_workers, options);
 
 ### Options on fugue.start:
 
