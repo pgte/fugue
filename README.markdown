@@ -6,7 +6,7 @@ Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](ht
 
 * Supports and type of Node.js server as long as it inherits from net.Server (http.Server, connect.Server, ...)
 * Failover -  when a worker dies it is restarted.
-* App reload using SIGUSR2.
+* Zero downtime app reload.
 * Set gid, uid.
 * Set working dir.
 * Redirect stdout to log files for master / workers
@@ -49,6 +49,16 @@ For TCP:
 * gid : unix group id for workers. Defaults to current group
 * daemonize : to fork and detach
 
+### How to respawn
+
+You can respawn the entire app (with no downtime)
+For now, you will have to find the PID of the master and, on the command line:
+
+    kill -USR2 <PID>
+    
+That will respawn your service with no downtime.
+
 ## TODO:
 
+* save the PID of the master into a file
 * Monitor request timeouts (as Unicorn does) - only plausible for HTTP Servers, though (??)
