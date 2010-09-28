@@ -1,6 +1,6 @@
 { "name" : "fugue"
 , "description" : "Unicorn for node for node"
-, "version" : "0.0.5"
+, "version" : "0.0.6"
 , "homepage" : "http://www.metaduck.com/fugue"
 , "author" : "Pedro Teixeira <pedro.teixeira@gmail.com> (http://www.metaduck.com)"
 , "contributors" :
