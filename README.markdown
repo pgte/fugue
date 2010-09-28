@@ -5,11 +5,11 @@ Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](ht
 ## Features:
 
 * Failover -  when a worker dies it is restarted.
-* Reload using SIGUSR2 (almost, as soon as [this](http://groups.google.com/group/nodejs/browse_thread/thread/eb3ba019e6dbec70) is sorted out).
+* Reload using SIGUSR2.
 * Set gid, uid.
 * Set working dir.
 * Redirect stdout to log files for master / workers
-* daemonize properly (almost).
+* daemonize properly.
 
 ## Install:
 
@@ -46,9 +46,8 @@ For TCP:
 * master_log_file : alternative path for the log file for the master only.
 * uid : unix user id for workers. Defaults to current user
 * gid : unix group id for workers. Defaults to current group
-* daemonize : Not yet supported
+* daemonize : to fork and detach
 
 ## TODO:
 
-* Reload using SIGUSR2 is pending depending on [this](http://groups.google.com/group/nodejs/browse_thread/thread/eb3ba019e6dbec70)
 * Monitor request timeouts (as Unicorn does) - only plausible for HTTP Servers, though (??)
