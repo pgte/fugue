@@ -49,14 +49,23 @@ For TCP:
 * gid : unix group id for workers. Defaults to current group
 * daemonize : to fork and detach
 
-### How to respawn
+### How to reload
 
-You can respawn the entire app (with no downtime)
+You can reload the entire app (with no downtime)
 For now, you will have to find the PID of the master and, on the command line:
 
     kill -USR2 <PID>
     
-That will respawn your service with no downtime.
+That will reload your service with no downtime.
+This is how it works:
+
+1. Master launches new master with your new app code
+1. New master launches new workers
+1. First worker notifies original master to shutdown
+1. Original master kills "old" workers, but...
+1. "Old" Workers only exit when all connections are closed.
+
+No downtime!
 
 ## TODO:
 
