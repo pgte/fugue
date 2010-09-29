@@ -7,9 +7,9 @@ var fugue = require('../lib/fugue.js'),
     net =   require('net');
 
 var server = net.createServer(function(conn) {
-  setTimeout(function() {
+  //setTimeout(function() {
     conn.end(process.pid.toString() + "Hello from "+fugue.workerId()+". I am user " + process.getuid() + " on dir " + process.cwd());
-  }, 5000);
+  //}, 5000);
   
 });
 
