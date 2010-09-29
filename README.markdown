@@ -60,9 +60,10 @@ That will respawn your service with no downtime.
 
 ## TODO:
 
-1. Save the PID of the master into a file
+1. Save the PID of the master into a file. This can be tricky when handling 
+1. Don't kill slaves with open connections. Have no idea of how to do this. Maybe related to monitoring (last TODO)?
 1. Use fork() to start the workers instead of spawn
 1. unit / integration tests - any ideas on how to test fugue?
 1. review the master / worker protocol for passing in the server socket
-1. review the code that synchronously tries to fetch the file descriptor from the  original master into the new respawned master (llib/fugue.js lines 72 - 91) - they're a bit too hacky - try and remove the recvMsg cycle...
+1. review the code that synchronously tries to fetch the file descriptor from the  original master into the new respawned master (lib/fugue.js lines 72 - 91) - they're a bit too hacky - try and remove the recvMsg cycle...
 1. Monitor request timeouts (as Unicorn does) - only plausible for HTTP Servers, though (??)
