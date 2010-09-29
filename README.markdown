@@ -61,7 +61,7 @@ That will respawn your service with no downtime.
 ## TODO:
 
 1. Save the PID of the master into a file. This can be tricky when handling 
-1. Don't kill slaves with open connections. Have no idea of how to do this. Maybe related to monitoring (last TODO)?
+1. (DONE) Don't kill slaves with open connections.
 1. Use fork() to start the workers instead of spawn
 1. unit / integration tests - any ideas on how to test fugue?
 1. review the master / worker protocol for passing in the server socket
