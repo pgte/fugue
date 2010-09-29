@@ -49,7 +49,7 @@ Handle<Value> CloseIO(const Arguments& args) {
 	close(STDERR_FILENO);
 }
 
-// Close Standard IN/OUT/ERR Streams
+// Sets new session id for current process
 Handle<Value> SetSid(const Arguments& args) {
   pid_t sid;
 	sid = setsid();
