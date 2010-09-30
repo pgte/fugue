@@ -22,7 +22,6 @@ fugue.start(server, 4000, null, 2, {
   // uid: 'pedroteixeira',
   // gid: 'staff',
   working_path: '/tmp',
-  tmp_path: process.cwd() + '/tmp',
   verbose: true
 });
 
