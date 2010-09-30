@@ -29,6 +29,8 @@ Example:
 
     fugue.start(server, 4000, null, 2, {verbose : true});
 
+Having trouble? read the [FAQ](http://github.com/pgte/fugue/wiki/FAQ).
+
 ### fugue.start
 
 For UNIX sockets:
@@ -76,3 +78,4 @@ No downtime!
 1. review the master / worker protocol for passing in the server socket
 1. review the code that synchronously tries to fetch the file descriptor from the  original master into the new respawned master (lib/fugue.js lines 72 - 91) - they're a bit too hacky - try and remove the recvMsg cycle...
 1. Monitor request timeouts (as Unicorn does) - only plausible for HTTP Servers, though (??)
+1. Don't hardcode path for unix socket. Make it a temporary random file and pass it around on environment?

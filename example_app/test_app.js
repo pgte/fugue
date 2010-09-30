@@ -1,6 +1,7 @@
 process.on('uncaughtException', function(excp) {
-  console.log(require('sys').inspect(excp));
-  console.log(require('sys').inspect(excp.stack));
+  var sys = require('sys')
+  console.log(sys.inspect(excp));
+  console.log(sys.inspect(excp.stack));
 });
 
 var fugue = require('../lib/fugue.js'),
@@ -18,8 +19,8 @@ fugue.start(server, 4000, null, 2, {
   daemonize: false,
   //log_file: process.cwd() +'/log/children.txt',
   //master_log_file: process.cwd() +'/log/master.txt',
-  uid: 'pedroteixeira',
-  gid: 'staff',
+  // uid: 'pedroteixeira',
+  // gid: 'staff',
   working_path: '/tmp',
   tmp_path: process.cwd() + '/tmp',
   verbose: true
