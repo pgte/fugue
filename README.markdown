@@ -24,7 +24,7 @@ Example:
         net =   require('net');
 
     var server = net.createServer(function(conn) {
-      conn.end(process.pid.toString() + "Hello from "+fugue.workerId()+". I am user " + process.getuid() + " on dir " + process.cwd());
+      conn.end(process.pid.toString() + "Hello from worker "+fugue.workerId());
     });
 
     fugue.start(server, 4000, null, 2, {verbose : true});
