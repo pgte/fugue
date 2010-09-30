@@ -50,6 +50,7 @@ For TCP:
 * uid : unix user id for workers. Defaults to current user
 * gid : unix group id for workers. Defaults to current group
 * daemonize : to fork and detach
+* master_pid_path : master PID file path. If not passed in, no pid file is written.
 
 ### How to reload
 
@@ -64,7 +65,7 @@ That will reload your service with no downtime.
 
 ## TODO:
 
-1. Save the PID of the master into a file. This can be tricky when handling master restarts. Should lock?
+1. (DONE) Save the PID of the master into a file. This can be tricky when handling master restarts. Should lock?
 1. (DONE) Don't kill slaves with open connections.
 1. Use fork() to start the workers instead of spawn
 1. unit / integration tests - any ideas on how to test fugue?

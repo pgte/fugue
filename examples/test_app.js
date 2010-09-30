@@ -22,6 +22,7 @@ fugue.start(server, 4000, null, 2, {
   // uid: 'pedroteixeira',
   // gid: 'staff',
   working_path: '/tmp',
-  verbose: true
+  verbose: true,
+  master_pid_path: '/tmp/fugue_master.pid'
 });
 
