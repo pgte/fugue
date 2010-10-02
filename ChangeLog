@@ -1,0 +1,9 @@
+2010.10.01 v0.0.15
+
+* Added tests: zero_workers, one_worker, i_can_reach_many_workers, app_reload (pgte);
+
+* Move verbose test out of log function and into configuration. If there's need to change logging at run time, then this code can be easily moved into a (new) function. (luismreis);
+
+* new fugue.stop() function (pgte);
+
+* options.verbose now defaults to false;
