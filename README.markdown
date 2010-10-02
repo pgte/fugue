@@ -33,13 +33,13 @@ Having trouble? read the [FAQ](http://github.com/pgte/fugue/wiki/FAQ).
 
 ### fugue.start
 
-For UNIX sockets:
-
-    fugue.start(server, socket_path, number_of_workers, options);
-    
 For TCP:
 
     fugue.start(server, port, host, number_of_workers, options);
+
+For UNIX sockets:
+
+    fugue.start(server, socket_path, number_of_workers, options);
 
 ### Options on fugue.start:
 

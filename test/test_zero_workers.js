@@ -9,21 +9,31 @@ server = net.createServer(function(conn) {
 });
 
 var port = 4001;
-fugue.start(server, port, null, 0, {verbose: false} );
 
-var client = net.createConnection(port);
+exports.setup = function() {
+  fugue.start(server, port, null, 0, {verbose: false} );
+}
 
-client.on('data', function() {
-  assert.ok(false, "I shouldn't be able to connect to zero workers")
-});
+exports.run = function(next) {
 
-client.on('error', function(error) {
-  assert.ok(false, "I got this error: "+error);
-});
+  var client = net.createConnection(port);
 
-setTimeout(function() {
-  process.nextTick(function() {
-    process.exit();
+  client.on('data', function() {
+    assert.ok(false, "I shouldn't be able to connect to zero workers")
   });
+
+  client.on('error', function(error) {
+    assert.ok(false, "I got this error: "+error);
+  });
+
+  setTimeout(function() {
+    process.nextTick(function() {
+      if(next) next();
+    });
+
+  }, 3000);
   
-}, 3000);
+}
+exports.teardown = function() {
+  fugue.stop();
+}

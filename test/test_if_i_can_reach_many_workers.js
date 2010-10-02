@@ -16,37 +16,51 @@ server = net.createServer(function(conn) {
 });
 
 var port = 4001;
-var worker_count = 4;
-fugue.start(server, port, null, worker_count, {verbose: false} );
+var worker_count = 4;  
 
-var worker_marks = {};
+exports.setup = function() {
+  fugue.start(server, port, null, worker_count, {verbose: false} );
+}
 
-setTimeout(function() {
-  // test that we have visited all workers
-  for(var workerIdx = 1; workerIdx <= worker_count; workerIdx ++) {
-    assert.equal(worker_marks[workerIdx], true, 'worker '+workerIdx+' did not respond');
-  }
-  process.exit();
-}, 3000);
+exports.run = function() {
 
-var workers_tried = 0;
-var safety_factor = 100;
-var max_tries = worker_count * safety_factor;
-var try_next_worker = function() {
-  workers_tried ++;
-  workerIdx = workers_tried;
-  var client = net.createConnection(port);
-  //console.log('trying worker pass #'+workerIdx);
+  var worker_marks = {};
 
-  var got_some_data = false;
-  client.on('data', function(workerId) {
-    //console.log('got: '+workerId);
-    worker_marks[workerId] = true;
-    client.destroy();
-    if (workers_tried < max_tries) {
-      try_next_worker();
+  var all_workers_contacted = function() {
+    for(var workerIdx = 1; workerIdx <= worker_count; workerIdx ++) {
+      if (!worker_marks[workerIdx]) return false;
     }
-  });
-  
-};
-try_next_worker();
+    return true;
+  }
+
+  setTimeout(function() {
+    // test that we have visited all workers
+    assert.ok(all_workers_contacted, 'not all workers responded');
+    if(next) next();
+  }, 3000);
+
+  var workers_tried = 0;
+  var safety_factor = 100;
+  var max_tries = worker_count * safety_factor;
+  var try_next_worker = function() {
+    workers_tried ++;
+    workerIdx = workers_tried;
+    var client = net.createConnection(port);
+    //console.log('trying worker pass #'+workerIdx);
+
+    var got_some_data = false;
+    client.on('data', function(workerId) {
+      //console.log('got: '+workerId);
+      worker_marks[workerId] = true;
+      client.destroy();
+      if(all_workers_contacted()) process.exit();
+      if (workers_tried < max_tries) try_next_worker();
+    });
+
+  };
+  try_next_worker();
+}
+
+exports.teardown = function() {
+  fugue.stop();
+}

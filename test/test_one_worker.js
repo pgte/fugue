@@ -1,4 +1,5 @@
 //Testing to see if I can get data from 1 worker...
+
 var path   = require('path'),
     net    = require('net'),
     assert = require('assert');
@@ -10,17 +11,28 @@ server = net.createServer(function(conn) {
 });
 
 var port = 4001;
-fugue.start(server, port, null, 1, {verbose: false} );
 
-var client = net.createConnection(port);
+exports.setup = function() {
+  fugue.start(server, port, null, 1, {verbose: false} );  
+}
 
-var got_some_data = false;
-client.on('data', function(what) {
-  got_some_data = true;
-  assert.equal(what.toString('ascii'), expected_data);
-});
+exports.run = function(next) {
 
-setTimeout(function() {
-  assert.ok(got_some_data, "Couldn't get data from server");
-  process.exit();
-}, 3000);
+  var client = net.createConnection(port);
+
+  var got_some_data = false;
+  client.on('data', function(what) {
+    got_some_data = true;
+    assert.equal(what.toString('ascii'), expected_data);
+    process.exit();
+  });
+
+  setTimeout(function() {
+    assert.ok(got_some_data, "Couldn't get data from server");
+    if(next) next();
+  }, 3000);
+}
+
+exports.teardown = function() {
+  fugue.stop();
+}
