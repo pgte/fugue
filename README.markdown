@@ -70,9 +70,10 @@ That will reload your service with no downtime.
 1. (DONE) Save the PID of the master into a file. This can be tricky when handling master restarts. Should lock?
 1. (DONE) Don't kill slaves with open connections.
 1. Use fork() to start the workers instead of spawn
-1. unit / integration tests - any ideas on how to test fugue?
+1. (DONE)unit / integration tests - any ideas on how to test fugue?
 1. review the master / worker protocol for passing in the server socket
 1. review the code that synchronously tries to fetch the file descriptor from the  original master into the new respawned master (lib/fugue.js lines 72 - 91) - they're a bit too hacky - try and remove the recvMsg cycle...
 1. Monitor request timeouts (as Unicorn does) - only plausible for HTTP Servers, though (??)
 1. (DONE) Don't hardcode path for unix socket. Make it a temporary random file and pass it around on environment?
 1. Somehow delete master sockets that are not being used. This can be tricky, since master socket paths are passed around to workers and new masters.
+1. Tests for these features: set gid, uid; set working dir; Redirect stdout to log files; daemonize properly.
