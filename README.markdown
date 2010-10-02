@@ -2,6 +2,8 @@
 
 Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](http://unicorn.bogomips.org/)
 
+[Why does fugue exist?](http://github.com/pgte/fugue/wiki/Why-does-Fugue-exist%3F)
+
 ## Features:
 
 * Supports any type of Node.js server as long as it inherits from net.Server (http.Server, connect.Server, ...).
