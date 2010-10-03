@@ -1,7 +1,9 @@
-2010.10.03 v0.0.16
+2010.10.03 v0.0.19
 
 * Reviewed the code that synchronously tries to fetch the file descriptor from the original master into the new respawned master (luismreis)
-* improved
+* improved fugue.stop (pgte)
+* added test-fail target to test if tests are failing correctly on spawned test children processes (pgte)
+* reviewed teardown of some tests (pgte)
 
 2010.10.01 v0.0.15
 
