@@ -4,7 +4,8 @@
 , "homepage" : "http://www.metaduck.com/fugue"
 , "author" : "Pedro Teixeira <pedro.teixeira@gmail.com> (http://www.metaduck.com)"
 , "contributors" :
-  [ "Pedro Teixeira <pedro.teixeira@gmail.com>"
+  [ "Pedro Teixeira <pedro.teixeira@gmail.com>",
+    "Luis Reis"
   ]
 , "repository" :
   { "type" : "git"
