@@ -13,7 +13,7 @@ var port = 4001;
 var master_pid_path = '/tmp/fugue_master_test.pid';
 
 exports.run = function(next) {
-
+  
   if (!process.env._FUGUE_TEST_APP_RELOAD) {
     // spawner
     // spawn new test

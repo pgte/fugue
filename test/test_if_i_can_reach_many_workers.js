@@ -22,7 +22,7 @@ exports.setup = function() {
   fugue.start(server, port, null, worker_count, {verbose: false} );
 }
 
-exports.run = function() {
+exports.run = function(next) {
 
   var worker_marks = {};
 
@@ -32,13 +32,13 @@ exports.run = function() {
     }
     return true;
   }
-
-  setTimeout(function() {
+  
+  
+  var timeout = setTimeout(function() {
     // test that we have visited all workers
     assert.ok(all_workers_contacted, 'not all workers responded');
-    if(next) next();
   }, 3000);
-
+  
   var workers_tried = 0;
   var safety_factor = 100;
   var max_tries = worker_count * safety_factor;
@@ -46,15 +46,17 @@ exports.run = function() {
     workers_tried ++;
     workerIdx = workers_tried;
     var client = net.createConnection(port);
-    //console.log('trying worker pass #'+workerIdx);
 
     var got_some_data = false;
     client.on('data', function(workerId) {
-      //console.log('got: '+workerId);
       worker_marks[workerId] = true;
       client.destroy();
-      if(all_workers_contacted()) process.exit();
-      if (workers_tried < max_tries) try_next_worker();
+      if (all_workers_contacted()) {
+        //console.log('all workers contacted');
+        clearTimeout(timeout);
+        if (next) next();
+      } else
+        if (workers_tried < max_tries) try_next_worker();
     });
 
   };

@@ -7,7 +7,7 @@ var fugue = require(path.join(__dirname, '..', 'lib', 'fugue.js'));
 
 var expected_data = 'here is some data';
 server = net.createServer(function(conn) {
-  conn.end(expected_data, 'ascii');
+  conn.end(expected_data);
 });
 
 var port = 4001;
@@ -23,7 +23,7 @@ exports.run = function(next) {
   var got_some_data = false;
   client.on('data', function(what) {
     got_some_data = true;
-    assert.equal(what.toString('ascii'), expected_data);
+    assert.equal(what.toString(), expected_data);
     process.exit();
   });
 

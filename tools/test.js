@@ -1,6 +1,11 @@
 process.on('uncaughtException', function(excp) {
-  var sys = require('sys')
-  console.log(sys.inspect(excp));
+  if (excp.message) {
+    process.stdout.write(excp.message);
+    if (excp.backtrace) process.stdout.write(excp.backtrace);
+  } else {
+    sys = require('sys');
+    process.stdout.write(sys.inspect(excp));    
+  }
 });
 
 var tests = process.argv.slice(2);
@@ -27,7 +32,7 @@ var do_test = function() {
   test_child.stdout.on('data', function(data) {
     assert.ok(false, data.toString());
   });
-  test_child.stdout.on('data', function(data) {
+  test_child.stderr.on('data', function(data) {
     assert.ok(false, data.toString());
   });
   test_child.on('exit', function() {
