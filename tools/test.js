@@ -1,7 +1,9 @@
 process.on('uncaughtException', function(excp) {
-  if (excp.message) {
-    process.stdout.write(excp.message);
+  if (excp.message || excp.name) {
+    if (excp.name) process.stdout.write(excp.name);
+    if (excp.message) process.stdout.write(excp.message);
     if (excp.backtrace) process.stdout.write(excp.backtrace);
+    if (excp.stack) process.stdout.write(excp.stack);
   } else {
     sys = require('sys');
     process.stdout.write(sys.inspect(excp));    

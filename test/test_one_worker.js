@@ -20,17 +20,19 @@ exports.run = function(next) {
 
   var client = net.createConnection(port);
 
+  var timeout_id = setTimeout(function() {
+    assert.ok(got_some_data, "Couldn't get data from server");
+    if(next) next();
+  }, 3000);
+
   var got_some_data = false;
   client.on('data', function(what) {
     got_some_data = true;
     assert.equal(what.toString(), expected_data);
-    process.exit();
+    clearTimeout(timeout_id);
+    next();
   });
 
-  setTimeout(function() {
-    assert.ok(got_some_data, "Couldn't get data from server");
-    if(next) next();
-  }, 3000);
 }
 
 exports.teardown = function() {
