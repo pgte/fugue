@@ -3,7 +3,7 @@
 3. Use fork() to start the workers instead of spawn
 4. (DONE)unit / integration tests - any ideas on how to test fugue?
 5. review the master / worker protocol for passing in the server socket
-6. review the code that synchronously tries to fetch the file descriptor from the  original master into the new respawned master (lib/fugue.js lines 72 - 91) - they're a bit too hacky - try and remove the recvMsg cycle...
+6. (DONE) Review the code that synchronously tries to fetch the file descriptor from the original master into the new respawned master (lib/fugue.js lines 72 - 91) - they're a bit too hacky - try and remove the recvMsg cycle...
 7. Monitor request timeouts (as Unicorn does) - only plausible for HTTP Servers, though (??)
 8. (DONE) Don't hardcode path for unix socket. Make it a temporary random file and pass it around on environment?
 9. Somehow delete master sockets that are not being used. This can be tricky, since master socket paths are passed around to workers and new masters.
