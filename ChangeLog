@@ -1,3 +1,8 @@
+2010.10.03 v0.0.16
+
+* Reviewed the code that synchronously tries to fetch the file descriptor from the original master into the new respawned master (luismreis)
+* improved
+
 2010.10.01 v0.0.15
 
 * Added tests: zero_workers, one_worker, i_can_reach_many_workers, app_reload (pgte);
