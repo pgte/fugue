@@ -1,3 +1,8 @@
+2010.10.05 v0.0.20
+
+* Fixed some important leaks that were preventing node to end after fugue.stop();
+* Added "started" callback to fugue.start();
+
 2010.10.03 v0.0.19
 
 * Reviewed the code that synchronously tries to fetch the file descriptor from the original master into the new respawned master (luismreis)

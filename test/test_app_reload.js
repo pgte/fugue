@@ -51,7 +51,7 @@ exports.run = function(next) {
     // wait sometime before starting to make calls
     setTimeout(function() {
       // start making calls
-      var intervalId = setInterval(make_call, 1000);
+      var intervalId = setInterval(make_call, 100);
       setTimeout(function() {
         // Now, restart app
         spawned.kill('SIGUSR2');
