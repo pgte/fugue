@@ -13,6 +13,3 @@ def build(bld):
   obj = bld.new_task_gen("cxx", "shlib", "node_addon")
   obj.target = "daemon"
   obj.source = "deps/daemon.cc"
-  
-def test(tst):
-  

@@ -25,10 +25,10 @@ exports.run = function(next) {
     var args = process.argv;
     var spawned = child_process.spawn(args[0], args.slice(1), env);
     spawned.stdout.on('data', function(data) {
-      log('master: '+data.toString());
+      console.log('master: '+data.toString());
     });
     spawned.stderr.on('data', function(data) {
-      log('master: '+data.toString());
+      console.log('master: '+data.toString());
     });
     
     var pids  = {};
@@ -37,6 +37,7 @@ exports.run = function(next) {
     var make_call = function() {
       var client = net.createConnection(port);
       client.on('data', function(pid) {
+        pid = pid.toString();
         if (!pids[pid]) {
           pids[pid] = true;
           pid_count ++;
@@ -72,8 +73,8 @@ exports.run = function(next) {
       conn.write(process.pid.toString());
       conn.end();
     });
-
-    fugue.start(server, port, null, 1, {verbose: false, master_pid_path : master_pid_path } );
+    
+    fugue.start(server, port, null, 1, {verbose: false  , master_pid_path : master_pid_path } );
     
   }
 

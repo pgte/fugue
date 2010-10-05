@@ -37,7 +37,7 @@ exports.run = function(next) {
   var timeout = setTimeout(function() {
     // test that we have visited all workers
     assert.ok(all_workers_contacted, 'not all workers responded');
-  }, 3000);
+  }, 4000);
   
   var workers_tried = 0;
   var safety_factor = 100;
