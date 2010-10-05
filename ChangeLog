@@ -1,3 +1,7 @@
+2010.10.05 v0.0.22
+
+* Now workers file descriptors (stdin, stdout, stderr) are the same as the master process, so there is no longer the need to pipe them from worker into master.
+
 2010.10.05 v0.0.20
 
 * Fixed some important leaks that were preventing node to end after fugue.stop();
