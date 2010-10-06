@@ -47,7 +47,7 @@ For UNIX sockets:
 
 * started : callback to be invoked when all workers are up and running
 * working_path : absolute path for the working dir
-* tmp_path : the absolute path for the temp dir. defaults to current_dir/tmp
+* tmp_path : the absolute path for the temp dir. defaults to '/tmp'
 * log_file : the full path of the log file if you wish stdout to be redirected there. All workers + master will write here. If absent does not touch stdout.
 * master_log_file : alternative path for the log file for the master only.
 * uid : unix user id for workers. Defaults to current user
