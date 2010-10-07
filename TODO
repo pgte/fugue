@@ -10,3 +10,4 @@
 10. Tests for these features: set gid, uid; set working dir; Redirect stdout to log files; daemonize properly.
 11. On sudden master death, somehow the workers should eventually realize that their master has died and kill themselves.
 12. Worker should notify master that he is also listening, so master can more accurately count him in in order to invoke the options.started callback.
+13. Worker should have a timeout when shutting down to prevent a client from hanging the process forever. Should be an option. default = 1 min?
