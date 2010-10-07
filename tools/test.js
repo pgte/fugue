@@ -30,7 +30,7 @@ var do_test = function() {
   var module_path = path.join(__dirname, '..', 'test', test + ".js");
   if (!path.existsSync(module_path)) throw "Could not find test path "+module_path;
   var run_this = [path.join(__dirname, 'one_test.js'), test];
-  var test_child = child_process.spawn(process.argv[0], run_this, process.env);
+  var test_child = child_process.spawn(process.argv[0], run_this, {env: process.env});
   test_child.stdout.on('data', function(data) {
     assert.ok(false, data.toString());
   });
