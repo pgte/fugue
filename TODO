@@ -7,8 +7,8 @@
 7. Monitor request timeouts (as Unicorn does) - only plausible for HTTP Servers, though (??)
 8. (DONE) Don't hardcode path for unix socket. Make it a temporary random file and pass it around on environment?
 9. Somehow delete master sockets that are not being used. This can be tricky, since master socket paths are passed around to workers and new masters.
-10. Tests for these features: set gid, uid; set working dir; Redirect stdout to log files; daemonize properly.
-11. On sudden master death, somehow the workers should eventually realize that their master has died and kill themselves.
-12. Worker should notify master that he is also listening, so master can more accurately count him in in order to invoke the options.started callback.
+10. (DONE) Tests for these features: set gid, uid; set working dir; Redirect stdout to log files; daemonize properly.
+11. (DONE) On sudden master death, somehow the workers should eventually realize that their master has died and kill themselves.
+12. (DONE) Worker should notify master that he is also listening, so master can more accurately count him in in order to invoke the options.started callback.
 13. Worker should have a timeout when shutting down to prevent a client from hanging the process forever. Should be an option. default = 1 min?
 14. Support a development mode, where any changes to the code trigger the master restart, much like nodemon - http://github.com/remy/nodemon

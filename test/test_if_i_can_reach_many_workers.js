@@ -10,9 +10,18 @@ var fugue = require(path.join(__dirname, '..', 'lib', 'fugue.js'));
 
 var expected_data = 'here is some data';
 server = net.createServer(function(conn) {
-  //console.log('worker '+fugue.workerId()+' got connection');
-  conn.end(fugue.workerId().toString(), 'ascii');
-  server.watcher.stop();
+  if (!fugue.isMaster()) {
+    //console.log('worker '+fugue.workerId()+' got connection');
+    conn.write(fugue.workerId().toString());
+    try {
+      conn.end();
+    } catch(exp) {
+      // do nothing if error closing
+    }
+    process.nextTick(function() {
+      server.watcher.stop();
+    });
+  }
 });
 
 var port = 4001;
@@ -50,11 +59,11 @@ exports.run = function(next) {
     var got_some_data = false;
     client.on('data', function(workerId) {
       worker_marks[workerId] = true;
-      client.destroy();
+      client.end();
       if (all_workers_contacted()) {
         //console.log('all workers contacted');
         clearTimeout(timeout);
-        if (next) next();
+        next();
       } else
         if (workers_tried < max_tries) try_next_worker();
     });
