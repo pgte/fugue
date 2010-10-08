@@ -16,7 +16,7 @@ Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](ht
 
 ## Install:
 
-    nmp install fugue
+    npm install fugue
 
 ## Usage:
 
