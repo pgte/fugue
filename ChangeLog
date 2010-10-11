@@ -1,3 +1,7 @@
+2010.10.11 v0.0.29
+
+* fixed connection counting on the workers
+
 2010.10.11 v0.0.28
 
 * fixed a racing condition while shutting down the workers
