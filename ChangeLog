@@ -1,3 +1,7 @@
+2010.10.11 v0.0.28
+
+* fixed a racing condition while shutting down the workers
+
 2010.10.11 v0.0.27
 
 * fixed a possible racing condition for access to master pid file when respawning
