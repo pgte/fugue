@@ -60,7 +60,7 @@ exports.run = function(next) {
         // wait some time before ending
         setTimeout(function() {
           clearInterval(intervalId);
-          assert.equal(2, pid_count, "We expected to have contacted 2 workers. we contacted "+pid_count);
+          assert.equal(4, pid_count, "We expected to have contacted 4 workers. we contacted "+pid_count);
           if (next) next();
         }, 5000);
         
@@ -74,7 +74,7 @@ exports.run = function(next) {
       conn.end();
     });
     
-    fugue.start(server, port, null, 1, {verbose: false  , master_pid_path : master_pid_path } );
+    fugue.start(server, port, null, 2, {verbose: false  , master_pid_path : master_pid_path } );
     
   }
 
