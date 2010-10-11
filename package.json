@@ -1,6 +1,6 @@
 { "name" : "fugue"
 , "description" : "Unicorn for node for node"
-, "version" : "0.0.25"
+, "version" : "0.0.26"
 , "homepage" : "http://www.metaduck.com/fugue"
 , "author" : "Pedro Teixeira <pedro.teixeira@gmail.com> (http://www.metaduck.com)"
 , "contributors" :
@@ -18,9 +18,12 @@
 , "directories" : { "lib" : "./lib" }
 , "engines" : { "node" : ">=0.2.2" }
 , "scripts" : { "install" : "node-waf configure build"}
+, "dependencies" :
+  { "carrier" : ">=0.0.1"
+  } 
 , "licenses" :
   [ { "type" : "MIT"
-    , "url" : "http://github.com/isaacs/npm/raw/master/LICENSE"
+    , "url" : "http://github.com/pgte/fugue/raw/master/LICENSE"
     }
   ]
 }

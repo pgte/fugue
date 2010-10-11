@@ -13,6 +13,7 @@ Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](ht
 * Set working dir.
 * Redirect stdout to log files for master / workers
 * daemonize properly.
+* workers suicide after master sudden death.
 
 ## Install:
 
@@ -26,7 +27,7 @@ Example:
         net =   require('net');
 
     var server = net.createServer(function(conn) {
-      conn.end(process.pid.toString() + "Hello from worker "+fugue.workerId());
+      conn.end(process.pid.toString() + "Hello from worker " + fugue.workerId());
     });
 
     fugue.start(server, 4000, null, 2, {verbose : true});

@@ -62,7 +62,7 @@ exports.run = function(next) {
           clearInterval(intervalId);
           assert.equal(2, pid_count, "We expected to have contacted 2 workers. we contacted "+pid_count);
           if (next) next();
-        }, 3000);
+        }, 5000);
         
       }, 3000);
     }, 2000);
