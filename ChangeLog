@@ -1,3 +1,8 @@
+2010.10.11 v0.0.30
+
+* Protected worker killing from throwing an exception when the worker is no longer there, in order to not compromise the whole shutdown process.
+* Fixed some tests on linux. For some reason, linux has more process affinity and it's harder to make him balance between workers.
+
 2010.10.11 v0.0.29
 
 * fixed connection counting on the workers

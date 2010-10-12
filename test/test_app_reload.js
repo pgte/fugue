@@ -54,6 +54,7 @@ exports.run = function(next) {
       // start making calls
       var intervalId = setInterval(make_call, 100);
       setTimeout(function() {
+        assert.equal(2, pid_count, "We expected to have contacted 2 workers so far (before the respawn). we contacted "+pid_count);
         // Now, restart app
         spawned.kill('SIGUSR2');
         
@@ -64,7 +65,7 @@ exports.run = function(next) {
           if (next) next();
         }, 5000);
         
-      }, 3000);
+      }, 5000);
     }, 2000);
     
   } else {
