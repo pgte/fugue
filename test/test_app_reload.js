@@ -72,6 +72,7 @@ exports.run = function(next) {
     server = net.createServer(function(conn) {
       conn.write(process.pid.toString());
       conn.end();
+      server.watcher.stop();
     });
     
     fugue.start(server, port, null, 2, {verbose: false  , master_pid_path : master_pid_path } );
