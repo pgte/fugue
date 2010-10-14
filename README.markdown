@@ -67,3 +67,28 @@ For now, you will have to find the PID of the master and, on the command line:
 That will reload your service with no downtime.
 
 [Read more on how this works](http://github.com/pgte/fugue/wiki/How-Fugue-Works).
+
+### Other available functions:
+
+#### fugue.stop()
+
+Kills fugue workers and closes the server socket.
+
+#### fugue.isWorker()
+
+Returns true if current process is a worker process.
+Returns false if current process is master.
+
+#### fugue.isMaster()
+
+Returns true if current process is master.
+Returns false if current process is a worker process.
+
+#### fugue.workerPids()
+
+Returns an array of integers with the workers process IDs.
+
+#### fugue.masterSocketPath()
+
+This method is public mainly because of allowing some complicated tests to be possible. Apps should not care.
+
