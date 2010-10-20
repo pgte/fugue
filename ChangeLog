@@ -1,3 +1,7 @@
+2010.10.20 v0.0.32
+
+* JSLint output is cleaner now
+
 2010.10.20 v0.0.31
 
 * Kill workers if they aren't dead after 30 seconds.
