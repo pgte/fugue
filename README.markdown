@@ -56,6 +56,7 @@ For UNIX sockets:
 * daemonize : to fork and detach
 * master_pid_path : master PID file path. If not passed in, no pid file is written
 * worker_to_master_ping_interval : the interval by which children ping master to know if it's alive. in milliseconds. defaults to 30000 (30 seconds)
+* worker_kill_timeout - when master is stopping, time to let workers kill themselves before REALLY killing them (miliseconds). defaults to 30000 (30 seconds)
 
 ### How to reload
 

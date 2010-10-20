@@ -1,3 +1,9 @@
+2010.10.20 v0.0.31
+
+* Kill workers if they aren't dead after 30 seconds.
+* New option worker_kill_timeout - when master is stopping, time to let workers kill themselves before REALLY killing them (miliseconds). defaults to 30000 (30 seconds).
+* Throws Error instances instead of strings when something goes wrong.
+
 2010.10.11 v0.0.30
 
 * Protected worker killing from throwing an exception when the worker is no longer there, in order to not compromise the whole shutdown process.
