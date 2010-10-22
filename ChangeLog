@@ -1,3 +1,9 @@
+2010.10.22 v0.0.34
+
+* Added test for unix socket server.
+* Corrected unix socket server argument shifting.
+* Tested setuid inside test-sudo Makefile target.
+
 2010.10.20 v0.0.32
 
 * JSLint output is cleaner now
