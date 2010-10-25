@@ -28,11 +28,11 @@ Handle<Value> Start(const Arguments& args) {
   
   ev_default_fork();
 
-  close(STDIN_FILENO);
-  close(STDOUT_FILENO);
-  close(STDERR_FILENO);
+  //close(STDIN_FILENO);
+  //close(STDOUT_FILENO);
+  //close(STDERR_FILENO);
 
-  sid = setsid();
+  //sid = setsid();
   
   return Integer::New(getpid());
 }
