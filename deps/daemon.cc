@@ -28,18 +28,27 @@ Handle<Value> Start(const Arguments& args) {
   
   ev_default_fork();
 
-  //close(STDIN_FILENO);
-  //close(STDOUT_FILENO);
-  //close(STDERR_FILENO);
+  close(STDIN_FILENO);
+  close(STDOUT_FILENO);
+  close(STDERR_FILENO);
 
-  //sid = setsid();
+  sid = setsid();
   
   return Integer::New(getpid());
+}
+
+Handle<Value> SetSid(const Arguments& args) {
+  pid_t sid;
+  
+  sid = setsid();
+  
+  return Integer::New(sid);
 }
 
 extern "C" void init(Handle<Object> target) {
   HandleScope scope;
   
   target->Set(String::New("start"), FunctionTemplate::New(Start)->GetFunction());
+  target->Set(String::New("setSid"), FunctionTemplate::New(SetSid)->GetFunction());
 
 }

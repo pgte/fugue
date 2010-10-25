@@ -14,7 +14,11 @@ server = net.createServer(function(conn) {
     //console.log('worker '+fugue.workerId()+' got connection');
     conn.write(fugue.workerId().toString());
     conn.flush();
-    conn.end();
+    try {
+      conn.end();
+    } catch (excep) {
+      
+    }
     process.nextTick(function() {
       server.watcher.stop();
     });
