@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <ev.h>
 
 #define PID_MAXLEN 10
 
@@ -25,51 +26,20 @@ Handle<Value> Start(const Arguments& args) {
   if(pid > 0) exit(0);
   if(pid < 0) exit(1);
   
-  return Integer::New(getpid());
-}
+  ev_default_fork();
 
-// Close Standard IN/OUT/ERR Streams
-Handle<Value> CloseIO(const Arguments& args) {
   close(STDIN_FILENO);
   close(STDOUT_FILENO);
   close(STDERR_FILENO);
-}
 
-// Sets new session id for current process
-Handle<Value> SetSid(const Arguments& args) {
-  pid_t sid;
   sid = setsid();
-  return Integer::New(sid);
-}
-
-// File-lock to make sure that only one instance of daemon is running.. also for storing PID
-/* lock ( filename )
-*** filename: a path to a lock-file.
-*** Note: if filename doesn't exist, it will be created when function is called.
-*/
-Handle<Value> LockD(const Arguments& args) {
-  if(!args[0]->IsString())
-    return Boolean::New(false);
   
-  String::Utf8Value data(args[0]->ToString());
-  char pid_str[PID_MAXLEN+1];
-  
-  int lfp = open(*data, O_RDWR | O_CREAT, 0640);
-  if(lfp < 0) exit(1);
-  if(lockf(lfp, F_TLOCK, 0) < 0) exit(0);
-  
-  int len = snprintf(pid_str, PID_MAXLEN, "%d", getpid());
-  write(lfp, pid_str, len);
-  
-  return Boolean::New(true);
+  return Integer::New(getpid());
 }
 
 extern "C" void init(Handle<Object> target) {
   HandleScope scope;
   
   target->Set(String::New("start"), FunctionTemplate::New(Start)->GetFunction());
-  target->Set(String::New("lock"), FunctionTemplate::New(LockD)->GetFunction());
-  target->Set(String::New("closeIO"), FunctionTemplate::New(CloseIO)->GetFunction());
-  target->Set(String::New("setSid"), FunctionTemplate::New(SetSid)->GetFunction());
 
 }
