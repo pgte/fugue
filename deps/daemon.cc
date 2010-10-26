@@ -20,7 +20,14 @@ using namespace v8;
 // if successful, returns daemon's PID
 Handle<Value> Start(const Arguments& args) {
   pid_t pid, sid;
-  int i;
+  int i, new_fd;
+
+  if (args.Length() < 1) {
+    return ThrowException(Exception::TypeError(
+          String::New("Must have at least one arg containing the file descriptor")));
+  }
+
+  new_fd = args[0]->Int32Value();
 
   pid = fork();
   if(pid > 0) exit(0);
@@ -29,8 +36,10 @@ Handle<Value> Start(const Arguments& args) {
   ev_default_fork();
 
   close(STDIN_FILENO);
-  close(STDOUT_FILENO);
-  close(STDERR_FILENO);
+  //close(STDOUT_FILENO);
+  //close(STDERR_FILENO);
+  dup2(new_fd, STDOUT_FILENO);
+  dup2(new_fd, STDERR_FILENO);
 
   sid = setsid();
   

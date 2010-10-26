@@ -7,7 +7,7 @@ fs.close(process.stdout.fd);
 fs.close(stdio.stderrFD);
 
 var daemon = require(__dirname + '/../build/default/daemon');
-var pid = daemon.fork();
+var pid = daemon.start();
 
 console.log("pid = "+pid);
 
