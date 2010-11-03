@@ -12,7 +12,6 @@ Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](ht
 * Set gid, uid.
 * Set working dir.
 * Redirect stdout to log files for master / workers
-* daemonize properly.
 * workers suicide after master sudden death.
 
 ## Install:
@@ -53,7 +52,6 @@ For UNIX sockets:
 * master_log_file : alternative path for the log file for the master only
 * uid : unix user id for workers. Defaults to current user
 * gid : unix group id for workers. Defaults to current group
-* daemonize : to fork and detach
 * master_pid_path : master PID file path. If not passed in, no pid file is written
 * worker_to_master_ping_interval : the interval by which children ping master to know if it's alive. in milliseconds. defaults to 30000 (30 seconds)
 * worker_kill_timeout - when master is stopping, time to let workers kill themselves before REALLY killing them (miliseconds). defaults to 30000 (30 seconds)

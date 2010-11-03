@@ -56,8 +56,7 @@ exports.run = function(next) {
       // get the worker pids
       var client = net.createConnection(master_debug_port);
       client.on('data', function(worker_pids) {
-        worker_pids = worker_pids.toString();
-        worker_pids = worker_pids.split(',');
+        worker_pids = worker_pids.toString().split(',');
         assert.equal(2, worker_pids.length, "expected 2 worker pids and I get " + worker_pids.length);
         client.end();
         
@@ -66,9 +65,13 @@ exports.run = function(next) {
         
         // wait some time to let the workers die
         setTimeout(function() {
+          //console.log('woke up');
+          //console.log(require('sys').inspect(worker_pids));
           worker_pids.forEach(function(worker_pid) {
-            var command = 'ps '+worker_pid+' | grep '+worker_pid;
+            var command = 'ps '+worker_pid + ' | grep '+worker_pid;
+            //console.log('issuing command '+command);
             child_process.exec(command, function(error, stdout, stderr) {
+              //console.log(command + ' done');
               assert.equal('', stderr, 'error executing command ' + command);
               assert.equal('', stdout, 'looks like worker processes are still working. command output was: '+stdout);
               next();
