@@ -4,7 +4,7 @@ build:
 	node-waf configure build
 
 test: build
-	node tools/test.js test_zero_workers test_one_worker test_if_i_can_reach_many_workers test_app_reload test_working_dir test_master_socket_is_protected test_leaks test_worker_dies_after_master_sudden_death test_unix_socket
+	node tools/test.js test_zero_workers test_one_worker test_if_i_can_reach_many_workers test_app_reload test_working_dir test_master_socket_is_protected test_leaks test_worker_dies_after_master_sudden_death test_unix_socket test_pipe_leaks
 
 test-sudo:
 	sudo NODE_PATH=${NODE_PATH} PATH=${PATH} node tools/test.js test_setuid

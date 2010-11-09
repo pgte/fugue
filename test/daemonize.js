@@ -10,4 +10,4 @@ var server = http.createServer(function (req, res) {
 
 
 
-fugue.start(server, 4000, null, 1, {verbose : true, daemonize: true, log_file: '/tmp/foo.log'});
+fugue.start(server, 4000, null, 4, {verbose : true, daemonize: false, log_file: '/tmp/foo.log', worker_to_master_ping_interval: 50});
