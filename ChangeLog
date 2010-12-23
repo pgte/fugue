@@ -1,3 +1,8 @@
+2010.12.23 v 0.1.0
+
+* now only supports node versions 0.3.2 and up
+* added a timeout of 30 seconds for worker death really happening
+
 2010.12.22 v 0.0.38
 
 * disable PING/PONG debug code

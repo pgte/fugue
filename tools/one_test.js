@@ -1,4 +1,4 @@
-
+var util = require('util');
 var path = require('path');
 
 var test_path = path.join(__dirname, '..', 'test', process.argv[2] + '.js');
@@ -27,8 +27,7 @@ process.on('uncaughtException', function(excp) {
     if (excp.backtrace) process.stdout.write(excp.backtrace);
     if (excp.stack) process.stdout.write(excp.stack);
   } else {
-    sys = require('sys');
-    process.stdout.write(sys.inspect(excp));    
+    process.stdout.write(util.inspect(excp));    
   }
   process.stdout.write("\n");
   do_exit();

@@ -1,3 +1,5 @@
+var util = require('util');
+
 process.on('uncaughtException', function(excp) {
   if (excp.message || excp.name) {
     if (excp.name) process.stdout.write(excp.name);
@@ -5,8 +7,7 @@ process.on('uncaughtException', function(excp) {
     if (excp.backtrace) process.stdout.write(excp.backtrace);
     if (excp.stack) process.stdout.write(excp.stack);
   } else {
-    sys = require('sys');
-    process.stdout.write(sys.inspect(excp));    
+    process.stdout.write(util.inspect(excp));    
   }
 });
 

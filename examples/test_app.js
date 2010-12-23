@@ -1,7 +1,7 @@
 process.on('uncaughtException', function(excp) {
-  var sys = require('sys')
-  console.log(sys.inspect(excp));
-  console.log(sys.inspect(excp.stack));
+  var util = require('util')
+  console.log(util.inspect(excp));
+  console.log(util.inspect(excp.stack));
 });
 
 var fugue = require('../lib/fugue.js'),
