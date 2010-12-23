@@ -4,6 +4,10 @@ Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](ht
 
 [Why does fugue exist?](http://github.com/pgte/fugue/wiki/Why-does-Fugue-exist%3F)
 
+Fugue v0.1.0 Requires node.js v0.3.2 or superior.
+
+Fugue v0.0.38 and below Requires node.js 0.v2.2 or superior.
+
 ## Features:
 
 * Supports any type of Node.js server as long as it inherits from net.Server (http.Server, connect.Server, ...).
