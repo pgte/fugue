@@ -69,6 +69,10 @@ For now, you will have to find the PID of the master and, on the command line:
     
 That will reload your service with no downtime.
 
+Notice that the slaves will only die when all the TCP connections end or after 30 seconds.
+If you are using an HTTP server, a slave could be waiting on browser HTTP keep-alive connections.
+On development environments, you would have to kill the browser for the slave to die - (on development environemnts you shouldn't really use fugue).
+
 [Read more on how this works](http://github.com/pgte/fugue/wiki/How-Fugue-Works).
 
 ### Other available functions:
