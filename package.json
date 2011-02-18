@@ -1,6 +1,6 @@
 { "name" : "fugue"
 , "description" : "Unicorn for node"
-, "version" : "0.1.0"
+, "version" : "0.1.1"
 , "homepage" : "http://www.metaduck.com/fugue"
 , "author" : "Pedro Teixeira <pedro.teixeira@gmail.com> (http://www.metaduck.com)"
 , "contributors" :
@@ -17,6 +17,7 @@
   }
 , "directories" : { "lib" : "./lib" }
 , "engines" : { "node" : ">=0.3.2" }
+, "main": "./lib/fugue.js"
 , "scripts" : { "install" : "node-waf configure build"}
 , "dependencies" :
   { "carrier" : ">=0.0.4"
