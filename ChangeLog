@@ -1,3 +1,7 @@
+2011.04.13 v 0.1.2
+
+* Don't set umask
+
 2010.12.23 v 0.1.0
 
 * now only supports node versions 0.3.2 and up
