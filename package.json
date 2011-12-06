@@ -16,7 +16,7 @@
   , "web" : "http://github.com/pgte/fugue/issues"
   }
 , "directories" : { "lib" : "./lib" }
-, "engines" : { "node" : ">=0.3.2" }
+, "engines" : { "node" : "<0.6.0" }
 , "main": "./lib/fugue.js"
 , "scripts" : { "install" : "node-waf configure build"}
 , "dependencies" :
