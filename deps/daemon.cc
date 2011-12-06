@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <ev.h>
+#include <node.h>
 
 #define PID_MAXLEN 10
 
