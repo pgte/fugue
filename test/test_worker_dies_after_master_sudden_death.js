@@ -66,7 +66,7 @@ exports.run = function(next) {
         // wait some time to let the workers die
         setTimeout(function() {
           //console.log('woke up');
-          //console.log(require('sys').inspect(worker_pids));
+          //console.log(require('util').inspect(worker_pids));
           worker_pids.forEach(function(worker_pid) {
             var command = 'ps '+worker_pid + ' | grep '+worker_pid;
             //console.log('issuing command '+command);
