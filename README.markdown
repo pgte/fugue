@@ -1,3 +1,5 @@
+# No longer supported!!!!
+
 # Multiple node server instance manager with Unicorn-like features
 
 Heavily inspired by [Spark](http://github.com/senchalabs/spark) and [Unicorn](http://unicorn.bogomips.org/)
